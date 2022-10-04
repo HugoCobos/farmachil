@@ -22,7 +22,7 @@ function Header()
 {
     // Logo
     //$this->Image('logo.png',10,6,30);
-    $this->Image('./css/medicalogo.jpg',10,6,30);
+    $this->Image('./css/logo_farmacia.png',10,6,30);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
     // Move to the right

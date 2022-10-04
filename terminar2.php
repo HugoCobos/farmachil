@@ -91,7 +91,7 @@ $printer->setJustification(Printer::JUSTIFY_CENTER);
 	el logo
 */
 try{
-	$logo = EscposImage::load("./css/drugstore.jpg", false);
+	$logo = EscposImage::load("./css/logo_farmacia.png", false);
 	//$pdf->Image('./css/Icon.png',15,10,15);
     $printer->bitImage($logo);
 }catch(Exception $e){/*No hacemos nada si hay error*/}
