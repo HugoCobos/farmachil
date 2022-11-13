@@ -6,7 +6,8 @@ ini_set("display_errors","on"); error_reporting (E_ALL);
 if($_SESSION['username'] != ''){
 include 'conexion.php';
 $conexion = conecta_mysql();
-$verdadera = "SELECT * FROM `productos` WHERE `fecha` BETWEEN CURRENT_DATE+10 AND CURRENT_DATE+25";
+$verdadera = "SELECT * FROM `productos` WHERE `fecha` BETWEEN DATE_SUB(NOW(), 
+INTERVAL 1 MONTH) AND CURRENT_DATE()+1";
 $resultado = $conexion -> query($verdadera);
 
 $sentencia = "SELECT * FROM `productos` WHERE `fecha` <= CURRENT_DATE()";

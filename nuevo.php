@@ -6,11 +6,10 @@ ini_set("display_errors","on"); error_reporting (E_ALL);
 if(!isset($_POST["codigo"]) || !isset($_POST["descripcion"]) || !isset($_POST["precioVenta"]) || !isset($_POST["descuento"]) || !isset($_POST["existencia"])) exit();
 
 #Si todo va bien, se ejecuta esta parte del código...
-include_once "conexionProductos.php";
-include_once "conexionProductosPDO.php";
+include_once 'conexion.php';
 include_once "base_de_datos.php";
 
-$conexion = conecta_productos();
+$conexion = conecta_mysql();
 $codigo = $_POST["codigo"];
 $descripcion = $_POST["descripcion"];
 $precioVenta = $_POST["precioVenta"];
@@ -50,15 +49,12 @@ $count = mysqli_num_rows($result);
 
  }else{
 
-$sentencia = $base_de_datosProductos->prepare("INSERT INTO productos (id,fecha, codigo, descripcion, precioVenta, existencia, proveedor, estado, clave, clavesat, descuento) 
-                                              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-$resultado = $sentencia->execute([NULL,$caducidad, $codigo, $descripcion, $precioVenta, $existencia, $proveedor, 'activo', $clave, $clavesat, $descuento]);
-$sentencia1 = $base_de_datos->prepare("INSERT INTO productos (id,fecha, codigo, descripcion, precioVenta, existencia, proveedor, estado, clave, clavesat, descuento) 
+$sentencia = $base_de_datos->prepare("INSERT INTO productos (id,fecha, codigo, descripcion, precioVenta, existencia, proveedor, estado, clave, clavesat, descuento) 
                                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-$resultado1 = $sentencia1->execute([NULL,$caducidad, $codigo, $descripcion, $precioVenta, $existencia, $proveedor, 'activo', $clave, $clavesat, $descuento]);
+$resultado = $sentencia->execute([NULL,$caducidad, $codigo, $descripcion, $precioVenta, $existencia, $proveedor, 'activo', $clave, $clavesat, $descuento]);
 }
 
-if($resultado === TRUE && $resultado1 === TRUE){
+if($resultado === TRUE){
   if ($_SESSION['nivel'] == 'administrador') {
     header("Location: ./admin/index.php");
   }else{
