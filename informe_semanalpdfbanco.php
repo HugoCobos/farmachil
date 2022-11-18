@@ -20,7 +20,7 @@ function Header()
     $this->Cell(45);
     //fecha
     // date_default_timezone_set("America/Mexico_City");
-    $today = date("F, j, Y");
+    $today = date("j/m/Y");
 
     // Title
     $this->SetTextColor(90,90,90);
@@ -118,5 +118,5 @@ $pdf->SetFontSize(12);
     $pdf->cell(45);
     $pdf->cell(40,10,$numventas++,1,0,'C',1);
     $pdf->cell(80,10,"$".$totalventas,1,0,'C',1);
-$pdf->Output('Reporte-Semanal-de-'.$semana.'-'.$mes.'-del-'.$year.'.pdf','i');
+$pdf->Output('Reporte-Semanal-banco-de-'.$semana.'-'.$mes.'-del-'.$year.'.pdf','i');
 ?>

@@ -4,7 +4,7 @@ include_once "base_de_datos.php";
 date_default_timezone_set("America/Mexico_City");
 setlocale(LC_TIME,'es_MX.UTF-8');
 $semana = strftime('%W');
-$mes = strftime('%B');
+$mes = strftime('%m');
 $year = date("Y");
 class PDF extends FPDF
 {
@@ -20,13 +20,13 @@ function Header()
     // Move to the right
     $this->Cell(45);
     //fecha
-    // date_default_timezone_set("America/Mexico_City");
+    date_default_timezone_set("America/Mexico_City");
     $mes = strftime('%B');
-    $today = date("F, j, Y");
+    $today = date("j/m/Y");
 
     // Title
     $this->SetTextColor(90,90,90);
-    $this->Cell(100,10,'Informe semanal de ' .$mes ,1,0,'C');
+    $this->Cell(100,10,'Informe semanal de ' .$today ,1,0,'C');
     // Line break
     $this->Ln(20);
 }

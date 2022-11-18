@@ -22,7 +22,7 @@ function Header()
 {
     // Logo
     //$this->Image('logo.png',10,6,30);
-    $this->Image('./css/logo_farmacia.png',10,6,30);
+    $this->Image('./css/logo_farmacia.png',6,6,20);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
     // Move to the right
@@ -134,7 +134,7 @@ foreach($ventas as $venta){
     $pdf->SetTextColor(45,45,45);
     $pdf->SetDrawColor(88,88,88);
     $pdf->cell(40,10,$venta->fecha,1,0,'C',1);
-    $pdf->cell(125,10,'',1,0,'C',1);
+    $pdf->cell(125);
     $pdf->cell(25,10,"$".$venta->total,1,0,'C',1);
     $pdf->Ln(10);
         $pdf->SetFontSize(12);
@@ -142,7 +142,7 @@ foreach($ventas as $venta){
         $pdf->SetFillcolor(255,255,255);
         $pdf->SetTextColor(45,45,45);
         $pdf->SetDrawColor(88,88,88);
-        $pdf->cell(40,10,"",0,0,'R',1);
+        $pdf->cell(40);
         $pdf->cell(35,10,utf8_decode('Código'),1,0,'C',1);
         $pdf->cell(50,10,utf8_decode('Descripción'),1,0,'C',1);
         $pdf->cell(40,10,'Cantidad',1,0,'C',1);
@@ -174,5 +174,5 @@ $pdf->SetFontSize(12);
     $Total = ($totalventas * .16)+ $totalventas;
 
     $pdf->cell(60,10,"$".$Total,1,0,'C',1);
-$pdf->Output('Reporte-Semanal-de-'.$semana.'-'.$mes.'-del-'.$year.'.pdf','i');
+$pdf->Output('Reporte-factura-de-'.$semana.'-'.$mes.'-del-'.$year.'.pdf','i');
 ?>
